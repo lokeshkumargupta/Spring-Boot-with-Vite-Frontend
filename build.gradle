@@ -1,0 +1,28 @@
+plugins {
+	id "java"
+	id "org.springframework.boot" version "3.4.3"
+	id "com.github.node-gradle.node" version "3.0.1"
+}
+
+ext {
+	jarName = "my-application" // You can change this to your desired name
+	jarVersion = "1.0.0"  // You can change this to your desired version
+}
+
+
+allprojects {
+	tasks.withType(Jar) {
+		archiveBaseName.set(rootProject.jarName)
+		archiveVersion.set(rootProject.jarVersion)
+	}
+}
+
+subprojects {
+	repositories {
+		mavenCentral()
+	}
+}
+
+task buildApp {
+	dependsOn ":api:build", ":frontend:buildFrontend"
+}

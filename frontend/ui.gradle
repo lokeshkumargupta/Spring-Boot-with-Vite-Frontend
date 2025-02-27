@@ -1,0 +1,1 @@
+plugins {    id "com.github.node-gradle.node" version "3.0.1"}node {    version = "20.9.0"    npmVersion = "10.1.0"    download = true}task installDependencies(type: NpmTask) {    args = ["install"]}task buildFrontend(type: NpmTask) {    dependsOn installDependencies    args = ["run", "build:prod"]}

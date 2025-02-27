@@ -1,0 +1,5 @@
+rootProject.name = 'demo-project'
+include 'api', 'frontend'
+
+project(':frontend').buildFileName = "ui.gradle"
+project(':api').buildFileName = "api.gradle"
